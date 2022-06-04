@@ -1,20 +1,29 @@
 package com.bridglabz;
 
 public class Gambler {
+    public static void startGambling() {
+        int StartingAmount =100;
+        int BetPerAmount  = 1;
+        while ( StartingAmount  != 150 || StartingAmount  !=50) {
+            int bet_result = (int) (Math.random() * 10) % 2;
+            if (bet_result == 0) {
+                StartingAmount = BetPerAmount - StartingAmount;
+            } else {
 
-    public static void startGambling(){
-        int StartingAmount = 100;
-        int BetPerAmount = 1;
-        int BetResult = (int) Math.floor(Math.random() * 10) % 2 ;
-            if ( BetResult == BetPerAmount){
-
-                System.out.println("win");
+                StartingAmount = BetPerAmount + StartingAmount;
             }
-            else
-                System.out.println("loos");
+            if(StartingAmount  == 150) {
+                System.out.println("Won 50% of the stake ");
+               break; }
+            else if (StartingAmount  == 50)
+            {
+                System.out.println("Lost 50 % of the stake");
+               break; }
+        }
     }
-
-    public static void main(String[] args) {
-        startGambling();
+    public static void main (String[]args){
+        Gambler play = new Gambler();
+        play.startGambling();
     }
 }
+
